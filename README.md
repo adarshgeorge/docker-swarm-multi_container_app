@@ -142,4 +142,4 @@ Fourth Container
 ![alt Out2](https://github.com/adarshgeorge/docker-swarm-multi_container_app/blob/master/png/replica4.png) 
 
 
-#That's it!
+### That's it!
