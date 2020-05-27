@@ -126,18 +126,18 @@ $
 
 **Result**
 
-First Container
+Loading from First Container
 
 ![alt Out2](https://github.com/adarshgeorge/docker-swarm-multi_container_app/blob/master/png/replica1.png) 
 
-Second Container
+Loading from Second Container
 ![alt Out2](https://github.com/adarshgeorge/docker-swarm-multi_container_app/blob/master/png/replica2.png) 
 
-Third Container
+Loading from Third Container
 
 ![alt Out2](https://github.com/adarshgeorge/docker-swarm-multi_container_app/blob/master/png/replica3.png) 
 
-Fourth Container
+Loading from Fourth Container
 
 ![alt Out2](https://github.com/adarshgeorge/docker-swarm-multi_container_app/blob/master/png/replica4.png) 
 
