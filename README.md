@@ -143,3 +143,49 @@ Loading from Fourth Container
 
 
 ### That's it!
+
+
+Now we're Joining another Node server
+
+```
+$ docker swarm join --token SWMTKN-1-1pxslguh0yy2i8f9la85po3f53etjyejs7m27jsp7ustkkw6wa-b7s13chwrmyhn1l533zcxc9vm 172.31.6.208:2377
+This node joined a swarm as a worker.
+$
+
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+```
+
+Verify in Master Node
+
+```
+
+$ docker node ls
+ID                            HOSTNAME                                      STATUS              AVAILABILITY        MANAGER STATUS      ENGINE VERSION
+jdza9qu4zxmgswvtqrlzdipxh *   ip-172-31-6-208.ap-south-1.compute.internal   Ready               Active              Leader              19.03.6-ce
+kf6f71nmz5n95wz2crutgmq3w     ip-172-31-9-253.ap-south-1.compute.internal   Ready               Active                                  19.03.6-ce
+$
+```
+
+
+
+Now we're going to update the replicas set from 4 to 6 container. 
+
+
+
+```
+$ docker ps
+CONTAINER ID        IMAGE                          COMMAND             CREATED             STATUS              PORTS               NAMES
+565fa2873c9a        adarshgeorge999/ipstackapp:1   "python3 app.py"    12 seconds ago      Up 10 seconds                           ipstack-app.5.li74ez7a66fr2r1s6hga05s9h
+83de004ce66a        adarshgeorge999/ipstackapp:1   "python3 app.py"    12 seconds ago      Up 10 seconds                           ipstack-app.6.p4f6bh6hib3xaenbgj2xltku8
+$
+```
+
+Loading from Worker Node 1
+
+![alt Out2](https://github.com/adarshgeorge/docker-swarm-multi_container_app/blob/master/png/2.png) 
+
+Loading from Worker Node 2
+
+
+![alt Out2](https://github.com/adarshgeorge/docker-swarm-multi_container_app/blob/master/png/searching2.png) 
