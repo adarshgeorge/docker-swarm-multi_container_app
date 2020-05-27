@@ -3,7 +3,7 @@
 * A DevOps Project to display Location of IP address.
 
 
-![alt HelloWorld](https://github.com/adarshgeorge/docker-multi_container_app/blob/master/png/Search.png)
+![alt App](https://github.com/adarshgeorge/docker-swarm-multi_container_app/blob/master/png/home.png)
 
 
 
@@ -36,18 +36,8 @@ To add a manager to this swarm, run 'docker swarm join-token manager' and follow
 $
 ```
 
-Creating redis cache server!
 
-```
-docker run \
--d \
---name ipstack-cache \
---network ipstack-net \
---restart always \
-redis:latest
-```
-
-Creating Overlay network 
+**Creating Overlay network**
 ```
 $ docker network create --driver overlay ipstack-net
 gw6ehdudygxydxvlihbmy8shp
@@ -55,7 +45,7 @@ $
 
 ```
 
-Now create redis service
+**Now create redis service**
 
 ```
 docker service create \
@@ -67,7 +57,7 @@ redis:latest
 ```
 
 
-Creating Flask Service
+**Creating Flask Service**
 
 
 ```
@@ -93,24 +83,63 @@ wsvhvt4w2dff        ipstack-cache       replicated          1/1                 
 $
 
 ```
+
 **Browse the Hostname or IP address.**
 
-![alt Out1]() 
+![alt Out1](https://github.com/adarshgeorge/docker-swarm-multi_container_app/blob/master/png/container1.png) 
 
 Refresh the page to verify app is loading from the different container. 
 
-![alt Search]() 
+![alt Search](https://github.com/adarshgeorge/docker-swarm-multi_container_app/blob/master/png/container2.png) 
+
 
 **Output**
 
 Search any IP
 
-![alt Search]() 
+![alt Search](https://github.com/adarshgeorge/docker-swarm-multi_container_app/blob/master/png/searching1.png) 
 
 
 Now again search the same IP address to verify the IP address is cached in reddis container. 
 
-![alt Out2]() 
+![alt Out2](https://github.com/adarshgeorge/docker-swarm-multi_container_app/blob/master/png/searching2.png) 
 
 
-## That's it!!
+### We're going to increase the container replicas from 2 to 4 container.
+
+```
+$ docker service update --replicas 4  ipstack-app
+
+ipstack-app
+overall progress: 4 out of 4 tasks                                                                                                                                      1/4: running [==================================================>]                                                                        2/4: running [==================================================>]                                                                         
+3/4: running [==================================================>]                                                                     
+4/4: running [==================================================>]                                                                   verify: Service converged                                                                                                                   
+
+
+$ docker service ls
+ID                  NAME                MODE                REPLICAS            IMAGE                          PORTS
+97gzs0sxqppp        ipstack-app         replicated          4/4                 adarshgeorge999/ipstackapp:1   *:80->8080/tcp
+wsvhvt4w2dff        ipstack-cache       replicated          1/1                 redis:latest
+$
+
+```
+
+**Result**
+
+First Container
+
+![alt Out2](https://github.com/adarshgeorge/docker-swarm-multi_container_app/blob/master/png/replica1.png) 
+
+Second Container
+![alt Out2](https://github.com/adarshgeorge/docker-swarm-multi_container_app/blob/master/png/replica2.png) 
+
+Third Container
+
+![alt Out2](https://github.com/adarshgeorge/docker-swarm-multi_container_app/blob/master/png/replica3.png) 
+
+Fourth Container
+
+![alt Out2](https://github.com/adarshgeorge/docker-swarm-multi_container_app/blob/master/png/replica4.png) 
+
+
+#That's it!
