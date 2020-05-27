@@ -1,4 +1,4 @@
-## Multi Container App using Flask Container and Redis in Docker Swarm Single Node Cluster!
+## Multi Container App in Single Node Cluster using Docker Swarm.
 
 * A DevOps Project to display Location of IP address.
 
